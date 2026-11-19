@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IRON FORCE | Gym</title>
+
+  <style>
+    /* =========================
+       GENERAL STYLES
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b0b0b;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: #ff3c00;
+      font-size: 14px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section-title h2 {
+      font-size: 42px;
+      margin-top: 10px;
+    }
+
+    .section-title p {
+      color: #aaa;
+      max-width: 650px;
+      margin: 15px auto 0;
+    }
+
+
+    /* =========================
+       NAVIGATION BAR
+    ========================= */
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(8, 8, 8, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #222;
+    }
+
+    .nav-container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #ff3c00;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ddd;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ff3c00;
+    }
+
+    .nav-button {
+      background: #ff3c00;
+      padding: 11px 18px;
+      border-radius: 5px;
+      color: white !important;
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+
+      background:
+        linear-gradient(90deg, rgba(0,0,0,0.9), rgba(0,0,0,0.35)),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      padding-top: 70px;
+    }
+
+    .hero-content span {
+      color: #ff3c00;
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 82px);
+      line-height: 0.95;
+      margin: 18px 0;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .hero h1 strong {
+      color: #ff3c00;
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 18px;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 25px;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: 0.3s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: #ff3c00;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #e33300;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid #777;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      border-color: #ff3c00;
+      color: #ff3c00;
+    }
+
+
+    /* =========================
+       STATISTICS
+    ========================= */
+
+    .stats {
+      background: #111;
+      border-bottom: 1px solid #222;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+    }
+
+    .stat {
+      padding: 35px 15px;
+      border-right: 1px solid #222;
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat h3 {
+      color: #ff3c00;
+      font-size: 35px;
+    }
+
+    .stat p {
+      color: #aaa;
+    }
+
+
+    /* =========================
+       MEMBERSHIP PLANS
+    ========================= */
+
+    .plans {
+      background: #0b0b0b;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .plan {
+      background: #151515;
+      border: 1px solid #292929;
+      border-radius: 10px;
+      padding: 35px;
+      position: relative;
+      transition: 0.3s;
+    }
+
+    .plan:hover {
+      transform: translateY(-8px);
+      border-color: #ff3c00;
+    }
+
+    .plan.featured {
+      border: 2px solid #ff3c00;
+      transform: scale(1.03);
+    }
+
+    .popular {
+      position: absolute;
+      top: 0;
+      right: 20px;
+      transform: translateY(-50%);
+      background: #ff3c00;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .plan h3 {
+      font-size: 25px;
+    }
+
+    .plan .price {
+      font-size: 42px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .plan .price small {
+      font-size: 14px;
+      color: #999;
+      font-weight: normal;
+    }
+
+    .plan ul {
+      list-style: none;
+      margin: 25px 0;
+    }
+
+    .plan li {
+      color: #bbb;
+      padding: 9px 0;
+      border-bottom: 1px solid #252525;
+    }
+
+    .plan li::before {
+      content: "✓";
+      color: #ff3c00;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    .plan .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+
+    /* =========================
+       PLAN COMPARISON
+    ========================= */
+
+    .comparison {
+      background: #111;
+    }
+
+    .comparison-table {
+      overflow-x: auto;
+      background: #161616;
+      border-radius: 10px;
+      border: 1px solid #292929;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+
+    th,
+    td {
+      padding: 18px;
+      text-align: center;
+      border-bottom: 1px solid #292929;
+    }
+
+    th {
+      background: #1d1d1d;
+      color: #ff3c00;
+    }
+
+    td:first-child {
+      text-align: left;
+      color: #ddd;
+    }
+
+    td {
+      color: #aaa;
+    }
+
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .service {
+      background: #151515;
+      padding: 30px 25px;
+      border-radius: 8px;
+      border: 1px solid #252525;
+      transition: 0.3s;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      border-color: #ff3c00;
+    }
+
+    .service-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #ff3c00;
+      font-weight: bold;
+    }
+
+    .service h3 {
+      margin-bottom: 10px;
+    }
+
+    .service p {
+      color: #999;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       SCHEDULE
+    ========================= */
+
+    .schedule {
+      background: #111;
+    }
+
+    .schedule-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 30px;
+    }
+
+    .schedule-box {
+      background: #171717;
+      border: 1px solid #292929;
+      border-radius: 10px;
+      padding: 30px;
+    }
+
+    .schedule-box h3 {
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .day {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid #292929;
+    }
+
+    .day span:last-child {
+      color: #ff3c00;
+      font-weight: bold;
+    }
+
+
+    /* =========================
+       GALLERY
+    ========================= */
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .gallery-item {
+      height: 260px;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
+    .gallery-item img {
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.08);
+    }
+
+
+    /* =========================
+       TRAINERS
+    ========================= */
+
+    .trainers {
+      background: #111;
+    }
+
+    .trainers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .trainer {
+      background: #171717;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #292929;
+    }
+
+    .trainer img {
+      height: 350px;
+      object-fit: cover;
+    }
+
+    .trainer-info {
+      padding: 25px;
+    }
+
+    .trainer-info h3 {
+      font-size: 23px;
+    }
+
+    .trainer-info span {
+      color: #ff3c00;
+      font-size: 14px;
+    }
+
+    .trainer-info p {
+      color: #999;
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta {
+      padding: 100px 20px;
+      text-align: center;
+
+      background:
+        linear-gradient(rgba(255, 60, 0, 0.85), rgba(255, 60, 0, 0.85)),
+        url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1800&q=80")
+        center/cover;
+    }
+
+    .cta h2 {
+      font-size: 48px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      max-width: 600px;
+      margin: auto auto 25px;
+    }
+
+    .cta .btn {
+      background: #111;
+    }
+
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    .location-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 30px;
+      align-items: stretch;
+    }
+
+    .location-info {
+      background: #151515;
+      padding: 35px;
+      border-radius: 10px;
+      border: 1px solid #292929;
+    }
+
+    .location-info h3 {
+      font-size: 27px;
+      margin-bottom: 20px;
+    }
+
+    .location-item {
+      margin-bottom: 20px;
+    }
+
+    .location-item strong {
+      display: block;
+      color: #ff3c00;
+      margin-bottom: 5px;
+    }
+
+    .location-item p {
+      color: #aaa;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+
+    /* =========================
+       FAQ
+    ========================= */
+
+    .faq {
+      background: #111;
+    }
+
+    .faq-container {
+      max-width: 850px;
+      margin: auto;
+    }
+
+    details {
+      background: #171717;
+      border: 1px solid #292929;
+      margin-bottom: 12px;
+      border-radius: 7px;
+      padding: 20px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    details p {
+      color: #999;
+      padding-top: 15px;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #070707;
+      padding: 60px 0 25px;
+      border-top: 1px solid #222;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #888;
+      max-width: 400px;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 9px;
+      color: #999;
+    }
+
+    footer a:hover {
+      color: #ff3c00;
+    }
+
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #222;
+      padding-top: 25px;
+      color: #666;
+      font-size: 13px;
+    }
+
+
+    /* =========================
+       WHATSAPP
+    ========================= */
+
+    .whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 14px;
+      z-index: 999;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+      transition: 0.3s;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-3px);
+      background: #20bd5a;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: none;
+      }
+
+      .plans-grid,
+      .trainers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .plan.featured {
+        transform: none;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .schedule-grid,
+      .location-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+
+    @media (max-width: 600px) {
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .section-title h2 {
+        font-size: 32px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-item {
+        height: 300px;
+      }
+
+      .cta h2 {
+        font-size: 35px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION BAR
+  ========================== -->
+
+  <nav>
+
+    <div class="nav-container">
+
+      <a href="#inicio" class="logo">
+        IRON<span>FORCE</span>
+      </a>
+
+      <ul class="nav-links">
+
+        <li>
+          <a href="#planes">Plans</a>
+        </li>
+
+        <li>
+          <a href="#servicios">Services</a>
+        </li>
+
+        <li>
+          <a href="#horarios">Schedule</a>
+        </li>
+
+        <li>
+          <a href="#galeria">Gallery</a>
+        </li>
+
+        <li>
+          <a href="#entrenadores">Trainers</a>
+        </li>
+
+        <li>
+          <a href="#contacto">Contact</a>
+        </li>
+
+      </ul>
+
+      <a href="#prueba" class="nav-button">
+        FREE TRIAL CLASS
+      </a>
+
+    </div>
+
+  </nav>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="inicio">
+
+    <div class="container">
+
+      <div class="hero-content">
+
+        <span>TRAIN HARDER</span>
+
+        <h1>
+          BUILD<br>
+          YOUR <strong>BEST</strong><br>
+          SELF
+        </h1>
+
+        <p>
+          A gym designed to help you reach your goals
+          with modern facilities, professional trainers, and
+          a community that motivates you to improve.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#planes" class="btn btn-primary">
+            View Plans
+          </a>
+
+          <a href="#prueba" class="btn btn-outline">
+            Try Your First Class
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       STATISTICS
+  ========================== -->
+
+  <section class="stats">
+
+    <div class="container stats-grid">
+
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Gym Access</p>
+      </div>
+
+      <div class="stat">
+        <h3>1,500+</h3>
+        <p>Members</p>
+      </div>
+
+      <div class="stat">
+        <h3>15</h3>
+        <p>Trainers</p>
+      </div>
+
+      <div class="stat">
+        <h3>50+</h3>
+        <p>Classes per Month</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       MEMBERSHIP PLANS
+  ========================== -->
+
+  <section class="section plans" id="planes">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>CHOOSE YOUR PLAN</span>
+
+        <h2>Membership Plans & Pricing</h2>
+
+        <p>
+          Find the membership that best fits your goals.
+        </p>
+
+      </div>
+
+
+      <div class="plans-grid">
+
+
+        <div class="plan">
+
+          <h3>Basic</h3>
+
+          <div class="price">
+            $399 <small>/ month</small>
+          </div>
+
+          <p>
+            Ideal for getting started with your training.
+          </p>
+
+          <ul>
+            <li>Access to the weight training area</li>
+            <li>Cardio area</li>
+            <li>Locker rooms</li>
+            <li>Monday to Friday access</li>
+          </ul>
+
+          <a href="#prueba" class="btn btn-outline">
+            Choose Plan
+          </a>
+
+        </div>
+
+
+        <div class="plan featured">
+
+          <div class="popular">
+            MOST POPULAR
+          </div>
+
+          <h3>Premium</h3>
+
+          <div class="price">
+            $599 <small>/ month</small>
+          </div>
+
+          <p>
+            Everything you need to take your training seriously.
+          </p>
+
+          <ul>
+            <li>Todo lo del plan Basic</li>
+            <li>Group classes</li>
+            <li>Daily access</li>
+            <li>Functional training area</li>
+            <li>1 monthly assessment</li>
+          </ul>
+
+          <a href="#prueba" class="btn btn-primary">
+            Choose Plan
+          </a>
+
+        </div>
+
+
+        <div class="plan">
+
+          <h3>Ultimate</h3>
+
+          <div class="price">
+            $899 <small>/ month</small>
+          </div>
+
+          <p>
+            The complete training experience.
+          </p>
+
+          <ul>
+            <li>Everything included in the Premium plan</li>
+            <li>Personal trainer</li>
+            <li>Training plan</li>
+            <li>Monthly progress tracking</li>
+            <li>Unlimited access</li>
+          </ul>
+
+          <a href="#prueba" class="btn btn-outline">
+            Choose Plan
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PLAN COMPARISON
+  ========================== -->
+
+  <section class="section comparison">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>COMPARE</span>
+
+        <h2>What Does Each Plan Include?</h2>
+
+      </div>
+
+
+      <div class="comparison-table">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Benefit</th>
+              <th>Basic</th>
+              <th>Premium</th>
+              <th>Ultimate</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>Weight training area</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+
+            <tr>
+              <td>Cardio</td>
+              <td>✓</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+
+            <tr>
+              <td>Group classes</td>
+              <td>—</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+
+            <tr>
+              <td>Functional training area</td>
+              <td>—</td>
+              <td>✓</td>
+              <td>✓</td>
+            </tr>
+
+            <tr>
+              <td>Personal Trainer</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+
+            <tr>
+              <td>Personalized training plan</td>
+              <td>—</td>
+              <td>—</td>
+              <td>✓</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SERVICES
+  ========================== -->
+
+  <section class="section" id="servicios">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>TRAIN YOUR WAY</span>
+
+        <h2>Our Services</h2>
+
+      </div>
+
+
+      <div class="services-grid">
+
+
+        <div class="service">
+
+          <div class="service-icon">
+            01
+          </div>
+
+          <h3>Weight training area</h3>
+
+          <p>
+            Fully equipped area for strength training.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">
+            02
+          </div>
+
+          <h3>Cardio</h3>
+
+          <p>
+            Treadmills, bikes, ellipticals, and more.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">
+            03
+          </div>
+
+          <h3>Group classes</h3>
+
+          <p>
+            Work out with others in a variety of classes throughout the week.
+          </p>
+
+        </div>
+
+
+        <div class="service">
+
+          <div class="service-icon">
+            04
+          </div>
+
+          <h3>Workout personal</h3>
+
+          <p>
+            Personalized guidance to help you reach your goals.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SCHEDULE
+  ========================== -->
+
+  <section class="section schedule" id="horarios">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>PLAN YOUR WORKOUT</span>
+
+        <h2>Schedule</h2>
+
+      </div>
+
+
+      <div class="schedule-grid">
+
+
+        <div class="schedule-box">
+
+          <h3>Gym Hours</h3>
+
+          <div class="day">
+            <span>Monday - Friday</span>
+            <span>5:00 - 23:00</span>
+          </div>
+
+          <div class="day">
+            <span>Saturday</span>
+            <span>6:00 - 21:00</span>
+          </div>
+
+          <div class="day">
+            <span>Sunday</span>
+            <span>7:00 - 18:00</span>
+          </div>
+
+        </div>
+
+
+        <div class="schedule-box">
+
+          <h3>Class Schedule</h3>
+
+          <div class="day">
+            <span>Spinning</span>
+            <span>Mon / Wed — 7:00 PM</span>
+          </div>
+
+          <div class="day">
+            <span>Funcional</span>
+            <span>Tue / Thu — 6:00 PM</span>
+          </div>
+
+          <div class="day">
+            <span>HIIT</span>
+            <span>Friday — 7:00 PM</span>
+          </div>
+
+          <div class="day">
+            <span>Yoga</span>
+            <span>Saturday — 10:00 AM</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       GALLERY
+  ========================== -->
+
+  <section class="section" id="galeria">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>EXPLORE OUR FACILITIES</span>
+
+        <h2>Gallery</h2>
+
+      </div>
+
+
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80"
+            alt="Gym area">
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80"
+            alt="Workout">
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=800&q=80"
+            alt="Gym equipment">
+        </div>
+
+        <div class="gallery-item">
+          <img
+            src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80"
+            alt="Workout funcional">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       TRAINERS
+  ========================== -->
+
+  <section class="section trainers" id="entrenadores">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>MEET THE TEAM</span>
+
+        <h2>Our Trainers</h2>
+
+        <p>
+          Qualified professionals ready to help you train
+          safely and effectively.
+        </p>
+
+      </div>
+
+
+      <div class="trainers-grid">
+
+
+        <div class="trainer">
+
+          <img
+            src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?auto=format&fit=crop&w=900&q=80"
+            alt="Trainer">
+
+          <div class="trainer-info">
+
+            <h3>Alex Torres</h3>
+
+            <span>Trainer de fuerza</span>
+
+            <p>
+              Specialist in strength training and conditioning.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="trainer">
+
+          <img
+            src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=900&q=80"
+            alt="Trainera">
+
+          <div class="trainer-info">
+
+            <h3>Laura Méndez</h3>
+
+            <span>Trainera funcional</span>
+
+            <p>
+              Focused on mobility, endurance, and functional training.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="trainer">
+
+          <img
+            src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=80"
+            alt="Trainer">
+
+          <div class="trainer-info">
+
+            <h3>Diego Ramos</h3>
+
+            <span>Personal Trainer</span>
+
+            <p>
+              Creates personalized programs based on your goals.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CTA / FREE TRIAL CLASS
+  ========================== -->
+
+  <section class="cta" id="prueba">
+
+    <h2>
+      Ready to Get Started?
+    </h2>
+
+    <p>
+      Prueba una clase y conoce nuestras instalaciones.
+      Solicita información sin compromiso.
+    </p>
+
+    <a
+      href="https://wa.me/5210000000000"
+      class="btn">
+      Book My First Class
+    </a>
+
+  </section>
+
+
+  <!-- =========================
+       LOCATION
+  ========================== -->
+
+  <section class="section" id="contacto">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>FIND US</span>
+
+        <h2>Location & Contact</h2>
+
+      </div>
+
+
+      <div class="location-grid">
+
+
+        <div class="location-info">
+
+          <h3>IRON FORCE</h3>
+
+
+          <div class="location-item">
+
+            <strong>Address</strong>
+
+            <p>
+              Av. Principal #123, Centro, Puebla, México
+            </p>
+
+          </div>
+
+
+          <div class="location-item">
+
+            <strong>WhatsApp</strong>
+
+            <p>
+              +52 000 000 0000
+            </p>
+
+          </div>
+
+
+          <div class="location-item">
+
+            <strong>Instagram</strong>
+
+            <p>
+              @ironforcegym
+            </p>
+
+          </div>
+
+
+          <div class="location-item">
+
+            <strong>Payment Methods</strong>
+
+            <p>
+              Cash · Card · Bank Transfer
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <iframe
+          src="https://www.google.com/maps?q=Puebla,Mexico&output=embed"
+          loading="lazy">
+        </iframe>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FAQ
+  ========================== -->
+
+  <section class="section faq">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <span>FREQUENTLY ASKED QUESTIONS</span>
+
+        <h2>Have Questions?</h2>
+
+      </div>
+
+
+      <div class="faq-container">
+
+
+        <details>
+
+          <summary>
+            Do I need experience to join the gym?
+          </summary>
+
+          <p>
+            No. Puedes comenzar aunque nunca hayas entrenado.
+            Nuestro equipo puede orientarte para empezar.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Can I try the gym before signing up?
+          </summary>
+
+          <p>
+            Sí. Puedes solicitar información sobre nuestra primera
+            clase de prueba.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            What does the Premium membership include?
+          </summary>
+
+          <p>
+            Incluye acceso al gym, clases grupales,
+            zona funcional y evaluaciones periódicas.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Are trainers available?
+          </summary>
+
+          <p>
+            Sí. Contamos con entrenadores que pueden ayudarte
+            con diferentes tipos de entrenamiento.
+          </p>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            What payment methods do you accept?
+          </summary>
+
+          <p>
+            We accept cash, cards, and bank transfers.
+          </p>
+
+        </details>
+
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+
+      <div class="footer-grid">
+
+
+        <div>
+
+          <h3>
+            IRON<span style="color:#ff3c00;">
+              FORCE
+            </span>
+          </h3>
+
+          <p>
+            Train hard. Improve every day.
+            Build a stronger version of yourself.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h3>Links</h3>
+
+          <ul>
+
+            <li>
+              <a href="#inicio">Home</a>
+            </li>
+
+            <li>
+              <a href="#planes">Plans</a>
+            </li>
+
+            <li>
+              <a href="#servicios">Services</a>
+            </li>
+
+            <li>
+              <a href="#galeria">Gallery</a>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        <div>
+
+          <h3>Social Media</h3>
+
+          <ul>
+
+            <li>
+              <a href="#" target="_blank">
+                Instagram
+              </a>
+            </li>
+
+            <li>
+              <a href="#" target="_blank">
+                Facebook
+              </a>
+            </li>
+
+            <li>
+              <a href="#" target="_blank">
+                TikTok
+              </a>
+            </li>
+
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+
+        © 2026 IRON FORCE.
+        All rights reserved.
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       WHATSAPP
+       BUTTON STYLE USED ON THE PREVIOUS PAGES
+  ========================== -->
+
+  <a
+    href="https://wa.me/5210000000000"
+    class="whatsapp"
+    target="_blank"
+    aria-label="Contact us on WhatsApp">
+
+    <span>WhatsApp</span>
+
+  </a>
+
+
+</body>
+</html>
